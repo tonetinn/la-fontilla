@@ -3,7 +3,7 @@ import { ArrowRight } from 'lucide-react'
 
 export function CheeseMoment() {
   return (
-    <section className="relative flex min-h-[85svh] items-center justify-center overflow-hidden bg-deep text-cream">
+    <section className="relative flex min-h-[70svh] items-center justify-center overflow-hidden bg-deep text-cream sm:min-h-[78svh]">
       <Image
         src="/images/cheese-pull.png"
         alt="Queijo sendo puxado de uma fatia de pizza da La Fontilla"
@@ -14,7 +14,7 @@ export function CheeseMoment() {
       <div className="absolute inset-0 bg-gradient-to-t from-deep via-deep/50 to-deep/40" />
 
       <div className="relative z-10 px-5 text-center">
-        <h2 className="font-serif text-7xl font-semibold leading-[0.9] tracking-tight text-balance sm:text-8xl lg:text-[8rem]">
+        <h2 className="font-serif text-[clamp(3.4rem,11vw,8rem)] font-semibold leading-[0.88] tracking-[-0.035em] text-balance">
           Puxa.
           <br />
           <span className="text-amber">E a gente entende.</span>

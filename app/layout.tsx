@@ -1,26 +1,21 @@
 import { Analytics } from '@vercel/analytics/next'
 import type { Metadata, Viewport } from 'next'
-import { Cormorant_Garamond, Manrope } from 'next/font/google'
+import { INSTAGRAM, UNITS } from '@/lib/data'
+import '@fontsource/cormorant-garamond/400.css'
+import '@fontsource/cormorant-garamond/500.css'
+import '@fontsource/cormorant-garamond/600.css'
+import '@fontsource/cormorant-garamond/700.css'
+import '@fontsource/manrope/400.css'
+import '@fontsource/manrope/500.css'
+import '@fontsource/manrope/600.css'
+import '@fontsource/manrope/700.css'
 import './globals.css'
-
-const cormorant = Cormorant_Garamond({
-  subsets: ['latin'],
-  weight: ['400', '500', '600', '700'],
-  variable: '--font-cormorant',
-  display: 'swap',
-})
-
-const manrope = Manrope({
-  subsets: ['latin'],
-  weight: ['400', '500', '600', '700'],
-  variable: '--font-manrope',
-  display: 'swap',
-})
 
 const siteUrl = 'https://lafontilla.com.br'
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
+  alternates: { canonical: '/' },
   title: 'La Fontilla | Pizzaria & Esfiharia',
   description:
     'Conheça a La Fontilla. Pizza, esfiha e um ambiente para toda a família em Jacarezinho e Santo Antônio da Platina. Peça online ou reserve sua mesa.',
@@ -35,6 +30,8 @@ export const metadata: Metadata = {
     'Delivery de pizza',
   ],
   authors: [{ name: 'La Fontilla' }],
+  applicationName: 'La Fontilla',
+  category: 'restaurant',
   openGraph: {
     title: 'La Fontilla | Pizzaria & Esfiharia',
     description:
@@ -52,7 +49,6 @@ export const metadata: Metadata = {
       'Pizza, esfiha e um ambiente para toda a família em Jacarezinho e Santo Antônio da Platina.',
     images: ['/images/hero-pizza.png'],
   },
-  generator: 'v0.app',
 }
 
 export const viewport: Viewport = {
@@ -62,16 +58,16 @@ export const viewport: Viewport = {
 
 const restaurantSchema = {
   '@context': 'https://schema.org',
-  '@type': 'Restaurant',
-  name: 'La Fontilla — Pizzaria & Esfiharia',
-  servesCuisine: ['Pizza', 'Esfiha', 'Italiana'],
-  priceRange: '$$',
-  image: `${siteUrl}/images/hero-pizza.png`,
-  url: siteUrl,
-  department: [
+  '@graph': [
     {
       '@type': 'Restaurant',
+      '@id': `${siteUrl}/#jacarezinho`,
       name: 'La Fontilla — Jacarezinho',
+      image: `${siteUrl}/images/fachada-jacarezinho.png`,
+      url: `${siteUrl}/#unidades`,
+      menu: UNITS.jacarezinho.order,
+      servesCuisine: ['Pizza', 'Esfiha'],
+      priceRange: '$$',
       address: {
         '@type': 'PostalAddress',
         streetAddress: 'Rua Cel. Figueiredo, 216',
@@ -81,6 +77,7 @@ const restaurantSchema = {
         addressCountry: 'BR',
       },
       telephone: '+5543991095947',
+      sameAs: [INSTAGRAM],
       aggregateRating: {
         '@type': 'AggregateRating',
         ratingValue: '4.3',
@@ -89,7 +86,13 @@ const restaurantSchema = {
     },
     {
       '@type': 'Restaurant',
+      '@id': `${siteUrl}/#santo-antonio-da-platina`,
       name: 'La Fontilla — Santo Antônio da Platina',
+      image: `${siteUrl}/images/fachada-santo-antonio.png`,
+      url: `${siteUrl}/#unidades`,
+      menu: UNITS['santo-antonio'].order,
+      servesCuisine: ['Pizza', 'Esfiha'],
+      priceRange: '$$',
       address: {
         '@type': 'PostalAddress',
         streetAddress: 'Av. Frei Guilherme Maria, 1033',
@@ -99,6 +102,7 @@ const restaurantSchema = {
         addressCountry: 'BR',
       },
       telephone: '+5543991095947',
+      sameAs: [INSTAGRAM],
     },
   ],
 }
@@ -109,7 +113,7 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="pt-BR" className={`${cormorant.variable} ${manrope.variable} bg-background`}>
+    <html lang="pt-BR" className="bg-background">
       <body className="font-sans antialiased">
         <script
           type="application/ld+json"

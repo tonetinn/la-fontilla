@@ -2,7 +2,7 @@ import Image from 'next/image'
 
 export function AqueleTipoDeNoite() {
   return (
-    <section className="relative flex min-h-[80svh] items-center overflow-hidden bg-deep text-cream">
+    <section className="relative flex min-h-[68svh] items-center overflow-hidden bg-deep text-cream sm:min-h-[76svh]">
       <Image
         src="/images/ambiente.png"
         alt="Salão cheio da La Fontilla em uma noite de sexta"
@@ -17,7 +17,7 @@ export function AqueleTipoDeNoite() {
           <p className="text-xs font-semibold uppercase tracking-[0.4em] text-amber">
             Sexta é La Fontilla
           </p>
-          <h2 className="mt-5 font-serif text-6xl font-semibold leading-[0.9] tracking-tight text-balance sm:text-7xl lg:text-8xl">
+          <h2 className="mt-5 font-serif text-[clamp(3.25rem,10vw,6.75rem)] font-semibold leading-[0.88] tracking-[-0.035em] text-balance">
             Aquele tipo de noite.
           </h2>
           <p className="mt-6 max-w-md text-lg leading-relaxed text-cream/80 text-pretty">

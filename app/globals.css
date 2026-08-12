@@ -42,8 +42,8 @@
   --color-terracota: var(--terracota);
   --color-amber: var(--amber);
 
-  --font-sans: var(--font-manrope), ui-sans-serif, system-ui, sans-serif;
-  --font-serif: var(--font-cormorant), ui-serif, Georgia, serif;
+  --font-sans: 'Manrope', ui-sans-serif, system-ui, sans-serif;
+  --font-serif: 'Cormorant Garamond', ui-serif, Georgia, serif;
 
   --radius-sm: calc(var(--radius) - 4px);
   --radius-md: calc(var(--radius) - 2px);
@@ -89,10 +89,19 @@
   }
   html {
     @apply bg-background;
+    scroll-behavior: smooth;
   }
   body {
     @apply bg-background text-foreground;
     font-feature-settings: 'ss01', 'cv01';
+  }
+  button,
+  a {
+    -webkit-tap-highlight-color: transparent;
+  }
+  :focus-visible {
+    outline: 2px solid var(--amber);
+    outline-offset: 4px;
   }
 }
 
@@ -102,6 +111,18 @@
   }
   .text-pretty {
     text-wrap: pretty;
+  }
+
+  .display-xl {
+    font-size: clamp(3.25rem, 11vw, 7.5rem);
+  }
+
+  .display-lg {
+    font-size: clamp(2.75rem, 8vw, 5.5rem);
+  }
+
+  .safe-bottom {
+    padding-bottom: max(0.75rem, env(safe-area-inset-bottom));
   }
 
   /* marquee lento */
@@ -130,5 +151,25 @@
       opacity: 1;
       transform: translateY(0);
     }
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+@media (max-width: 340px), (max-height: 720px) {
+  .hero-rating {
+    display: none;
   }
 }

@@ -1,0 +1,10 @@
+packages:
+  - '.'
+
+overrides:
+  hono: 4.12.25
+
+confirmModulesPurge: false
+
+allowBuilds:
+  unrs-resolver: true

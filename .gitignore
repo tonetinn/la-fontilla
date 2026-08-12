@@ -6,5 +6,9 @@ __v0_jsx-dev-runtime.ts
 # Common ignores
 node_modules
 .next/
+*.tsbuildinfo
+.pnpm-store/
+AGENTS.md
+CLAUDE.md
 .env*.local
 .DS_Store

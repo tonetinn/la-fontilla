@@ -15,7 +15,7 @@ const QUICK_LINKS = [
 
 export function SiteFooter() {
   return (
-    <footer className="bg-deep text-cream">
+    <footer className="bg-deep pb-24 text-cream lg:pb-0">
       <div className="mx-auto max-w-7xl px-5 py-16 lg:px-8 lg:py-20">
         <div className="grid gap-12 lg:grid-cols-12">
           {/* Hub de links — substitui o Linktree */}
@@ -24,7 +24,7 @@ export function SiteFooter() {
               Acessos rápidos
             </h2>
             <p className="mt-2 text-sm text-cream/60">
-              Tudo o que você encontrava no nosso link da bio, agora aqui.
+              Tudo da La Fontilla em um só lugar.
             </p>
             <ul className="mt-8 grid gap-x-8 gap-y-1 sm:grid-cols-2">
               {QUICK_LINKS.map((link) => (

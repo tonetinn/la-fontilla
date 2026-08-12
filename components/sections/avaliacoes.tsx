@@ -36,26 +36,31 @@ export function Avaliacoes() {
             </p>
           </Reveal>
 
-          <div className="grid gap-6 sm:grid-cols-2 lg:col-span-8">
+          <div className="divide-y divide-border border-y border-border lg:col-span-8">
             {REVIEWS.map((review, i) => (
               <Reveal
                 key={i}
                 delay={i * 100}
-                className="flex flex-col justify-between rounded-2xl border border-border bg-card p-8"
+                className="grid gap-5 py-8 sm:grid-cols-[3rem_1fr] sm:gap-7 sm:py-10"
               >
+                <span aria-hidden="true" className="font-serif text-5xl leading-none text-amber/70">
+                  {String(i + 1).padStart(2, '0')}
+                </span>
                 <div>
-                  <div className="flex gap-1">
-                    {Array.from({ length: 5 }).map((_, s) => (
-                      <Star key={s} className="size-4 fill-amber text-amber" />
-                    ))}
-                  </div>
-                  <p className="mt-5 font-serif text-2xl font-medium leading-snug text-balance text-primary">
+                  <p className="font-serif text-2xl font-medium leading-snug text-balance text-primary sm:text-3xl">
                     {`“${review.text}”`}
                   </p>
+                  <div className="mt-5 flex items-center gap-4">
+                    <div className="flex gap-1" aria-label="5 de 5 estrelas">
+                      {Array.from({ length: 5 }).map((_, s) => (
+                        <Star key={s} aria-hidden="true" className="size-3.5 fill-amber text-amber" />
+                      ))}
+                    </div>
+                    <p className="text-xs font-medium uppercase tracking-[0.18em] text-muted-foreground">
+                      Cliente no Google
+                    </p>
+                  </div>
                 </div>
-                <p className="mt-6 text-sm font-medium uppercase tracking-[0.18em] text-muted-foreground">
-                  Cliente no Google
-                </p>
               </Reveal>
             ))}
           </div>

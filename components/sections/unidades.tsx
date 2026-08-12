@@ -34,7 +34,7 @@ function UnitPanel({
       onMouseEnter={() => onHover(true)}
       onMouseLeave={() => onHover(false)}
       className={cn(
-        'group relative min-h-[70svh] flex-1 overflow-hidden transition-[flex-grow] duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] lg:min-h-[80svh]',
+        'group relative min-h-[60svh] flex-1 overflow-hidden transition-[flex-grow] duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] sm:min-h-[65svh] lg:min-h-[78svh]',
         active && 'lg:grow-[1.6]',
         dim && 'lg:grow-[0.7]',
       )}
@@ -102,7 +102,7 @@ export function Unidades() {
     <section id="unidades" className="scroll-mt-20 bg-deep text-cream">
       <div className="mx-auto max-w-7xl px-5 pt-20 lg:px-8 lg:pt-28">
         <p className="text-xs font-semibold uppercase tracking-[0.4em] text-amber">Unidades</p>
-        <h2 className="mt-5 max-w-3xl font-serif text-5xl font-semibold leading-[0.95] tracking-tight text-balance sm:text-6xl lg:text-7xl">
+        <h2 className="display-lg mt-5 max-w-3xl font-serif font-semibold leading-[0.92] tracking-[-0.025em] text-balance">
           Duas cidades. A mesma La Fontilla.
         </h2>
       </div>

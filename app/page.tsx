@@ -20,7 +20,7 @@ export default function Page() {
   return (
     <UnitSelectorProvider>
       <SiteHeader />
-      <main className="pb-20 lg:pb-0">
+      <main>
         <Hero />
         <Marquee />
         <Gastronomia />

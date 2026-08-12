@@ -7,7 +7,7 @@ export function Gastronomia() {
       <div className="mx-auto max-w-7xl px-5 lg:px-8">
         <Reveal className="max-w-3xl">
           <p className="text-xs font-semibold uppercase tracking-[0.4em] text-terracota">À mesa</p>
-          <h2 className="mt-5 font-serif text-5xl font-semibold leading-[0.95] tracking-tight text-balance text-primary sm:text-6xl lg:text-7xl">
+          <h2 className="display-lg mt-5 font-serif font-semibold leading-[0.92] tracking-[-0.025em] text-balance text-primary">
             Difícil é parar na primeira.
           </h2>
         </Reveal>

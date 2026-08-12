@@ -7,7 +7,7 @@ export function CtaFinal() {
   const { open } = useUnitSelector()
 
   return (
-    <section className="relative flex min-h-[85svh] items-center justify-center overflow-hidden bg-deep text-cream">
+    <section className="relative flex min-h-[72svh] items-center justify-center overflow-hidden bg-deep text-cream sm:min-h-[80svh]">
       <Image
         src="/images/pizza-served.png"
         alt="Pizza sendo servida na mesa da La Fontilla"
@@ -21,7 +21,7 @@ export function CtaFinal() {
         <p className="text-xs font-semibold uppercase tracking-[0.35em] text-amber">
           Jacarezinho <span className="mx-1">•</span> Santo Antônio da Platina
         </p>
-        <h2 className="mx-auto mt-6 max-w-4xl font-serif text-6xl font-semibold leading-[0.9] tracking-tight text-balance sm:text-7xl lg:text-8xl">
+        <h2 className="mx-auto mt-6 max-w-4xl font-serif text-[clamp(3.25rem,10vw,6.75rem)] font-semibold leading-[0.88] tracking-[-0.035em] text-balance">
           Hoje a noite é na La Fontilla.
         </h2>
 

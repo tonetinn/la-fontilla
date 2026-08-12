@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { Menu, X } from 'lucide-react'
 import { cn } from '@/lib/utils'
 import { Wordmark } from '@/components/wordmark'
@@ -18,6 +18,8 @@ export function SiteHeader() {
   const { open } = useUnitSelector()
   const [scrolled, setScrolled] = useState(false)
   const [menuOpen, setMenuOpen] = useState(false)
+  const closeButtonRef = useRef<HTMLButtonElement>(null)
+  const menuTriggerRef = useRef<HTMLButtonElement>(null)
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 40)
@@ -27,9 +29,18 @@ export function SiteHeader() {
   }, [])
 
   useEffect(() => {
+    if (!menuOpen) return
+    const onKey = (event: KeyboardEvent) => {
+      if (event.key === 'Escape') setMenuOpen(false)
+    }
+    document.addEventListener('keydown', onKey)
     document.body.style.overflow = menuOpen ? 'hidden' : ''
+    const menuTrigger = menuTriggerRef.current
+    requestAnimationFrame(() => closeButtonRef.current?.focus())
     return () => {
+      document.removeEventListener('keydown', onKey)
       document.body.style.overflow = ''
+      menuTrigger?.focus()
     }
   }, [menuOpen])
 
@@ -76,6 +87,7 @@ export function SiteHeader() {
         </div>
 
         <button
+          ref={menuTriggerRef}
           className="rounded-full p-2 text-cream lg:hidden"
           aria-label="Abrir menu"
           aria-expanded={menuOpen}
@@ -86,10 +98,11 @@ export function SiteHeader() {
       </div>
 
       {menuOpen && (
-        <div className="fixed inset-0 z-50 flex flex-col bg-deep text-cream lg:hidden">
+        <div className="fixed inset-0 z-50 flex flex-col bg-deep text-cream lg:hidden" role="dialog" aria-modal="true" aria-label="Menu principal">
           <div className="flex items-center justify-between px-5 py-4">
             <Wordmark tagline={false} className="text-cream" />
             <button
+              ref={closeButtonRef}
               className="rounded-full p-2"
               aria-label="Fechar menu"
               onClick={() => setMenuOpen(false)}
@@ -111,7 +124,7 @@ export function SiteHeader() {
             ))}
           </nav>
 
-          <div className="mt-auto flex flex-col gap-3 px-5 pb-10 pt-8">
+          <div className="safe-bottom mt-auto flex flex-col gap-3 px-5 pt-8">
             <button
               onClick={() => {
                 setMenuOpen(false)
