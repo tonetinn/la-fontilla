@@ -1,0 +1,134 @@
+@import 'tailwindcss';
+@import 'tw-animate-css';
+
+@custom-variant dark (&:is(.dark *));
+
+/*
+  LA FONTILLA — Pizzaria & Esfiharia
+  Paleta oficial da marca:
+  verde La Fontilla  #3E4B25
+  verde profundo     #202918
+  creme              #F1E9D8
+  off-white          #FAF7F0
+  terracota (discreto) #A64F32
+  ambar (discreto)   #C79A3E
+*/
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+
+  /* tokens de marca */
+  --color-deep: var(--deep);
+  --color-deep-foreground: var(--deep-foreground);
+  --color-cream: var(--cream);
+  --color-offwhite: var(--offwhite);
+  --color-terracota: var(--terracota);
+  --color-amber: var(--amber);
+
+  --font-sans: var(--font-manrope), ui-sans-serif, system-ui, sans-serif;
+  --font-serif: var(--font-cormorant), ui-serif, Georgia, serif;
+
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+}
+
+:root {
+  color-scheme: light;
+
+  --deep: #202918;
+  --deep-foreground: #f1e9d8;
+  --cream: #f1e9d8;
+  --offwhite: #faf7f0;
+  --terracota: #a64f32;
+  --amber: #c79a3e;
+
+  --background: #f1e9d8;
+  --foreground: #202918;
+  --card: #faf7f0;
+  --card-foreground: #202918;
+  --popover: #faf7f0;
+  --popover-foreground: #202918;
+  --primary: #3e4b25;
+  --primary-foreground: #f6f1e5;
+  --secondary: #e7ddc7;
+  --secondary-foreground: #3e4b25;
+  --muted: #e7ddc7;
+  --muted-foreground: #6c6a53;
+  --accent: #a64f32;
+  --accent-foreground: #f6f1e5;
+  --destructive: #a64f32;
+  --border: #d8cdb2;
+  --input: #d8cdb2;
+  --ring: #3e4b25;
+
+  --radius: 0.5rem;
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  html {
+    @apply bg-background;
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-feature-settings: 'ss01', 'cv01';
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+  .text-pretty {
+    text-wrap: pretty;
+  }
+
+  /* marquee lento */
+  @keyframes marquee {
+    from {
+      transform: translateX(0);
+    }
+    to {
+      transform: translateX(-50%);
+    }
+  }
+  .animate-marquee {
+    animation: marquee 40s linear infinite;
+  }
+  .animate-marquee-slow {
+    animation: marquee 60s linear infinite;
+  }
+
+  /* reveal suave ao entrar na viewport */
+  @keyframes reveal-up {
+    from {
+      opacity: 0;
+      transform: translateY(24px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+}
