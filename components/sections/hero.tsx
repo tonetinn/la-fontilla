@@ -2,7 +2,6 @@
 
 import Image from 'next/image'
 import { ArrowDown, ArrowRight, Star } from 'lucide-react'
-import { MagneticButton, MaskReveal } from '@/components/origin-motion'
 import { useUnitSelector } from '@/components/unit-selector'
 
 export function Hero() {
@@ -10,84 +9,68 @@ export function Hero() {
 
   return (
     <section id="top" className="relative min-h-svh overflow-hidden bg-deep text-cream">
-      <div className="absolute inset-0 opacity-30 [background-image:radial-gradient(circle_at_16%_22%,rgba(199,154,62,0.18),transparent_28%),linear-gradient(115deg,transparent_55%,rgba(62,75,37,0.5))]" />
+      <Image
+        src="/images/hero-pizza.png"
+        alt="Pizza artesanal da La Fontilla com borda dourada e queijo derretido"
+        fill
+        priority
+        sizes="100vw"
+        className="object-cover object-[58%_center] sm:object-[62%_center] lg:object-center"
+      />
+      <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(24,32,17,0.96)_0%,rgba(24,32,17,0.82)_34%,rgba(24,32,17,0.2)_72%,rgba(24,32,17,0.12)_100%)]" />
+      <div className="absolute inset-0 bg-gradient-to-t from-deep via-deep/10 to-deep/45" />
+      <div className="absolute inset-0 bg-deep/20 lg:hidden" />
+      <div className="pointer-events-none absolute inset-3 border border-cream/15 sm:inset-5" />
 
-      <div className="relative mx-auto grid min-h-svh max-w-[1600px] lg:grid-cols-[0.88fr_1.12fr]">
-        <div className="relative z-10 flex flex-col justify-end px-5 pb-28 pt-28 sm:px-8 lg:justify-center lg:px-14 lg:pb-16 xl:px-20">
-          <div className="max-w-[42rem]">
-            <div className="mb-7 flex items-center gap-4">
-              <span className="h-px w-12 bg-amber" />
-              <p className="text-[0.66rem] font-semibold uppercase tracking-[0.42em] text-amber">
-                Pizzaria &amp; Esfiharia
-              </p>
-            </div>
-
-            <MaskReveal direction="bottom-to-top" delay={120} duration={1100}>
-              <h1 className="font-serif text-[clamp(4rem,8.6vw,8.7rem)] font-medium leading-[0.76] tracking-[-0.055em] text-balance">
-                A noite
-                <span className="block pl-[0.38em] italic text-cream/92">pede La</span>
-                <span className="block text-amber">Fontilla.</span>
-              </h1>
-            </MaskReveal>
-
-            <p className="mt-8 max-w-md border-l border-cream/25 pl-5 text-base leading-relaxed text-cream/72 sm:text-lg">
-              Pizza, esfiha, bons momentos e espaço para toda a família.
-            </p>
-
-            <div className="mt-9 flex flex-col gap-3 sm:flex-row">
-              <MagneticButton
-                onClick={() => open('order')}
-                className="inline-flex min-h-14 rounded-full bg-amber px-8 text-sm font-bold uppercase tracking-[0.14em] text-deep shadow-[0_18px_50px_rgba(0,0,0,0.22)] hover:shadow-[0_22px_60px_rgba(0,0,0,0.3)]"
-              >
-                Pedir agora
-                <ArrowRight className="size-4 transition-transform group-hover:translate-x-1" />
-              </MagneticButton>
-              <MagneticButton
-                onClick={() => open('reserve')}
-                className="min-h-14 rounded-full border border-cream/35 px-8 text-sm font-semibold uppercase tracking-[0.12em] text-cream hover:border-cream hover:text-deep"
-              >
-                Reservar uma mesa
-              </MagneticButton>
-            </div>
-
-            <div className="mt-9 flex flex-wrap items-center gap-x-4 gap-y-3 text-xs uppercase tracking-[0.16em] text-cream/58">
-              <span className="text-amber">Escolha a unidade</span>
-              <span className="size-1 rounded-full bg-amber" />
-              <span>Jacarezinho</span>
-              <span className="size-1 rounded-full bg-amber" />
-              <span>Santo Antônio da Platina</span>
-              <span className="hero-rating flex items-center gap-1.5 normal-case tracking-normal text-cream/72">
-                <Star className="size-3.5 fill-amber text-amber" /> 4,3 · 78 avaliações (Jacarezinho)
-              </span>
-            </div>
-          </div>
+      <div className="relative mx-auto flex min-h-svh max-w-[1600px] flex-col px-5 pb-24 pt-28 sm:px-9 sm:pb-28 lg:px-14 lg:pb-8 lg:pt-32 xl:px-20">
+        <div className="hero-kicker flex items-center justify-between gap-5 border-t border-cream/30 pt-4 text-[0.62rem] font-semibold uppercase tracking-[0.32em] text-cream/68">
+          <span>Pizzaria &amp; Esfiharia</span>
+          <span className="hidden text-right sm:block">Jacarezinho · Santo Antônio da Platina</span>
         </div>
 
-        <MaskReveal direction="right-to-left" duration={1250} className="absolute inset-0 lg:relative lg:inset-auto lg:m-5 lg:ml-0 lg:overflow-hidden lg:rounded-[2rem]">
-          <Image
-            src="/images/hero-pizza.png"
-            alt="Pizza artesanal da La Fontilla com borda dourada e queijo derretido"
-            fill
-            priority
-            sizes="(max-width: 1024px) 100vw, 58vw"
-            className="object-cover object-[62%_center] lg:object-center"
-          />
-          <div className="absolute inset-0 bg-gradient-to-t from-deep via-deep/55 to-deep/30 lg:bg-gradient-to-r lg:from-deep/65 lg:via-transparent lg:to-transparent" />
-          <div className="absolute inset-0 bg-deep/15 lg:hidden" />
+        <div className="hero-title my-auto max-w-[60rem] py-14 sm:py-16 lg:py-8">
+          <h1 className="font-serif text-[clamp(4.8rem,12vw,11.6rem)] font-medium leading-[0.68] tracking-[-0.065em] text-balance">
+            <span className="block">A noite</span>
+            <span className="block pl-[0.3em] italic text-cream/94">pede</span>
+            <span className="block text-amber">La Fontilla.</span>
+          </h1>
+          <p className="mt-8 max-w-sm border-l border-amber pl-5 text-base leading-relaxed text-cream/78 sm:text-lg">
+            Pizza, esfiha e uma mesa pronta para reunir quem importa.
+          </p>
+        </div>
 
-          <div className="absolute bottom-7 right-7 hidden max-w-[15rem] border border-cream/20 bg-deep/70 p-5 backdrop-blur-md xl:block">
-            <p className="font-serif text-2xl italic leading-tight text-cream">A mesa está quase pronta.</p>
-            <p className="mt-3 text-[0.62rem] font-semibold uppercase tracking-[0.28em] text-amber">Duas unidades · Paraná</p>
+        <div className="hero-actions grid overflow-hidden border border-cream/20 bg-deep/88 shadow-[0_24px_80px_rgba(8,12,5,0.38)] backdrop-blur-sm lg:grid-cols-[1.05fr_0.8fr_0.8fr]">
+          <div className="flex flex-col justify-center border-b border-cream/15 px-5 py-5 sm:px-7 lg:border-b-0 lg:border-r">
+            <p className="text-[0.62rem] font-bold uppercase tracking-[0.28em] text-amber">Primeiro, escolha a cidade</p>
+            <div className="mt-2 flex flex-wrap items-center gap-x-3 gap-y-2 text-sm text-cream/72">
+              <span>Jacarezinho</span><span className="size-1 rounded-full bg-amber" /><span>Santo Antônio da Platina</span>
+            </div>
+            <p className="hero-rating mt-2 flex items-center gap-1.5 text-xs text-cream/62">
+              <Star className="size-3.5 fill-amber text-amber" /> 4,3 · 78 avaliações — Jacarezinho
+            </p>
           </div>
-        </MaskReveal>
+          <button
+            onClick={() => open('order')}
+            className="group flex min-h-16 items-center justify-between border-b border-cream/15 bg-amber px-6 text-sm font-bold uppercase tracking-[0.15em] text-deep transition-colors duration-300 hover:bg-cream focus-visible:outline-offset-[-4px] sm:min-h-20 sm:px-8 lg:border-b-0 lg:border-r"
+          >
+            Pedir agora
+            <ArrowRight className="size-4 transition-transform duration-300 group-hover:translate-x-1" />
+          </button>
+          <button
+            onClick={() => open('reserve')}
+            className="group flex min-h-16 items-center justify-between px-6 text-sm font-semibold uppercase tracking-[0.14em] text-cream transition-colors duration-300 hover:bg-cream hover:text-deep focus-visible:outline-offset-[-4px] sm:min-h-20 sm:px-8"
+          >
+            Reservar mesa
+            <ArrowRight className="size-4 transition-transform duration-300 group-hover:translate-x-1" />
+          </button>
+        </div>
       </div>
 
       <a
         href="#gastronomia"
-        aria-label="Conhecer a gastronomia La Fontilla"
-        className="absolute bottom-6 left-1/2 z-20 hidden -translate-x-1/2 items-center gap-2 text-[0.62rem] font-semibold uppercase tracking-[0.28em] text-cream/55 transition-colors hover:text-amber lg:flex"
+        className="absolute right-9 top-1/2 z-20 hidden -translate-y-1/2 rotate-90 items-center gap-2 text-[0.58rem] font-semibold uppercase tracking-[0.3em] text-cream/60 transition-colors hover:text-amber xl:flex"
       >
-        Descobrir <ArrowDown className="size-3.5" />
+        Conhecer a mesa <ArrowDown className="size-3.5" />
       </a>
     </section>
   )

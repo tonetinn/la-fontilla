@@ -19,8 +19,11 @@ import { CtaFinal } from '@/components/sections/cta-final'
 export default function Page() {
   return (
     <UnitSelectorProvider>
+      <a href="#conteudo" className="sr-only fixed left-4 top-4 z-[200] bg-cream px-4 py-3 font-semibold text-primary focus:not-sr-only">
+        Ir para o conteúdo
+      </a>
       <SiteHeader />
-      <main>
+      <main id="conteudo" tabIndex={-1}>
         <Hero />
         <Marquee />
         <Gastronomia />

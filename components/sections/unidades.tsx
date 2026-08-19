@@ -22,13 +22,11 @@ function UnitPanel({
   active,
   dim,
   onHover,
-  index,
 }: {
   unit: Unit
   active: boolean
   dim: boolean
   onHover: (v: boolean) => void
-  index: number
 }) {
   const img = IMAGES[unit.id]
   return (
@@ -56,8 +54,8 @@ function UnitPanel({
 
       <div className="relative z-10 flex h-full flex-col justify-between p-6 text-cream sm:p-10 lg:p-12">
         <div className="flex items-center justify-between border-t border-cream/30 pt-4 text-[0.6rem] font-bold uppercase tracking-[0.3em] text-cream/70">
-          <span>Unidade 0{index + 1}</span>
-          <span>Paraná</span>
+          <span>Unidade La Fontilla</span>
+          <span>{unit.city}</span>
         </div>
 
         <div>
@@ -85,7 +83,7 @@ function UnitPanel({
             className="inline-flex items-center justify-center gap-2 rounded-full bg-amber px-6 py-3 text-sm font-bold tracking-wide text-deep transition-transform hover:-translate-y-0.5"
           >
             <ShoppingBag className="size-4" />
-            Pedir nessa unidade
+            Pedir em {unit.shortName}
           </a>
           <a
             href={unit.reserve}
@@ -94,7 +92,7 @@ function UnitPanel({
             className="inline-flex items-center justify-center gap-2 rounded-full border border-cream/40 px-6 py-3 text-sm font-semibold tracking-wide text-cream transition-colors hover:border-cream hover:bg-cream/10"
           >
             <UtensilsCrossed className="size-4" />
-            Reservar mesa
+            Reservar em {unit.shortName}
           </a>
           <a
             href={unit.maps}
@@ -103,7 +101,7 @@ function UnitPanel({
             className="inline-flex items-center justify-center gap-2 rounded-full border border-cream/40 px-6 py-3 text-sm font-semibold tracking-wide text-cream transition-colors hover:border-cream hover:bg-cream/10"
           >
             <MapPin className="size-4" />
-            Como chegar
+            Rota para {unit.shortName}
           </a>
         </div>
         </div>
@@ -128,14 +126,13 @@ export function Unidades() {
       </div>
 
       <div className="mt-12 flex flex-col lg:mt-16 lg:flex-row">
-        {UNIT_LIST.map((unit, index) => (
+        {UNIT_LIST.map((unit) => (
           <UnitPanel
             key={unit.id}
             unit={unit}
             active={hovered === unit.id}
             dim={hovered !== null && hovered !== unit.id}
             onHover={(v) => setHovered(v ? unit.id : null)}
-            index={index}
           />
         ))}
       </div>

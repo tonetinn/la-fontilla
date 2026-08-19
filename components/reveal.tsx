@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect, useRef, useState } from 'react'
+import { useLayoutEffect, useRef, useState } from 'react'
 import { cn } from '@/lib/utils'
 
 export function Reveal({
@@ -15,15 +15,18 @@ export function Reveal({
   as?: React.ElementType
 }) {
   const ref = useRef<HTMLElement>(null)
-  const [visible, setVisible] = useState(false)
+  const [visible, setVisible] = useState(true)
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     const el = ref.current
     if (!el) return
-    if (typeof IntersectionObserver === 'undefined') {
-      const frame = requestAnimationFrame(() => setVisible(true))
-      return () => cancelAnimationFrame(frame)
-    }
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return
+    if (typeof IntersectionObserver === 'undefined') return
+
+    const rect = el.getBoundingClientRect()
+    if (rect.top <= window.innerHeight * 0.94) return
+
+    setVisible(false)
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
@@ -36,7 +39,11 @@ export function Reveal({
       { threshold: 0.15, rootMargin: '0px 0px -8% 0px' },
     )
     observer.observe(el)
-    return () => observer.disconnect()
+    const fallback = window.setTimeout(() => setVisible(true), 1800)
+    return () => {
+      window.clearTimeout(fallback)
+      observer.disconnect()
+    }
   }, [])
 
   return (
@@ -44,7 +51,7 @@ export function Reveal({
       ref={ref}
       style={{ transitionDelay: `${delay}ms` }}
       className={cn(
-        'transition-all duration-[900ms] ease-[cubic-bezier(0.16,1,0.3,1)] will-change-transform motion-reduce:transition-none',
+        'transition-[opacity,transform] duration-[900ms] ease-[cubic-bezier(0.16,1,0.3,1)] will-change-transform motion-reduce:transition-none',
         visible ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0',
         className,
       )}

@@ -17,7 +17,7 @@ export function Avaliacoes() {
               <span className="font-serif text-[9rem] font-medium leading-[0.65] tracking-[-0.08em] text-primary lg:text-[11rem]">4,3</span>
               <Star className="ml-3 size-8 fill-amber text-amber" />
             </div>
-            <p className="mt-8 max-w-[15rem] border-t border-primary/20 pt-4 text-sm leading-relaxed text-primary/60">78 avaliações no Google<br />Unidade de Jacarezinho</p>
+            <p className="mt-8 max-w-[15rem] border-t border-primary/20 pt-4 text-sm leading-relaxed text-primary/80">78 avaliações no Google<br />Unidade de Jacarezinho</p>
           </Reveal>
 
           <div className="lg:col-span-7 lg:col-start-6">
@@ -26,8 +26,9 @@ export function Avaliacoes() {
                 <Quote className="absolute right-0 top-8 size-12 text-amber/30" />
                 <p className="max-w-3xl pr-10 font-serif text-[clamp(2rem,3.8vw,3.8rem)] font-medium italic leading-[1.02] tracking-[-0.025em] text-primary">“{review}”</p>
                 <div className="mt-7 flex items-center gap-4">
-                  <div className="flex gap-1" aria-label="5 de 5 estrelas">{Array.from({ length: 5 }).map((_, s) => <Star key={s} aria-hidden="true" className="size-3.5 fill-amber text-amber" />)}</div>
-                  <span className="text-[0.62rem] font-semibold uppercase tracking-[0.24em] text-primary/50">Cliente no Google · 0{i + 1}</span>
+                  <span className="sr-only">5 de 5 estrelas</span>
+                  <div aria-hidden="true" className="flex gap-1">{Array.from({ length: 5 }).map((_, s) => <Star key={s} className="size-3.5 fill-amber text-amber" />)}</div>
+                  <span className="text-[0.62rem] font-semibold uppercase tracking-[0.24em] text-terracota">Avaliação pública no Google</span>
                 </div>
               </Reveal>
             ))}

@@ -4,7 +4,7 @@ export function Marquee() {
   const line = [...WORDS, ...WORDS, ...WORDS]
   return (
     <section aria-hidden="true" className="overflow-hidden border-y border-border bg-cream py-6">
-      <div className="flex w-max animate-marquee-slow items-center whitespace-nowrap motion-reduce:animate-none">
+      <div className="flex w-max items-center whitespace-nowrap">
         {[0, 1].map((group) => (
           <div key={group} className="flex items-center">
             {line.map((word, i) => (

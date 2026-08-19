@@ -36,7 +36,7 @@ export function SiteFooter() {
                     className="group flex items-center justify-between border-b border-cream/10 py-3.5 text-[0.95rem] font-medium text-cream/90 transition-colors hover:text-amber"
                   >
                     {link.label}
-                    <ArrowUpRight className="size-4 text-cream/40 transition-all group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:text-amber" />
+                    <ArrowUpRight className="size-4 text-cream/40 transition-[color,transform] group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:text-amber" />
                   </a>
                 </li>
               ))}
@@ -73,7 +73,7 @@ export function SiteFooter() {
           </div>
         </div>
 
-        <div className="mt-14 flex flex-col gap-2 border-t border-cream/10 pt-8 text-xs text-cream/50 sm:flex-row sm:items-center sm:justify-between">
+        <div className="mt-14 flex flex-col gap-2 border-t border-cream/10 pt-8 text-xs text-cream/60 sm:flex-row sm:items-center sm:justify-between">
           <p>© {new Date().getFullYear()} La Fontilla — Pizzaria &amp; Esfiharia. Todos os direitos reservados.</p>
           <p>Jacarezinho · Santo Antônio da Platina — Paraná</p>
         </div>

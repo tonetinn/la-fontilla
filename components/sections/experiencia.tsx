@@ -7,7 +7,7 @@ export function Experiencia() {
       <div className="absolute inset-y-0 right-0 w-1/3 bg-deep/20" />
       <div className="relative mx-auto grid max-w-[1480px] gap-14 px-5 sm:px-8 lg:grid-cols-12 lg:px-12">
         <Reveal className="relative z-10 self-center lg:col-span-5 lg:pr-8">
-          <p className="flex items-center gap-4 text-[0.66rem] font-semibold uppercase tracking-[0.42em] text-amber"><span className="h-px w-12 bg-amber" /> A experiência La Fontilla</p>
+          <p className="flex items-center gap-4 text-[0.66rem] font-semibold uppercase tracking-[0.42em] text-cream/85"><span className="h-px w-12 bg-amber" /> A experiência La Fontilla</p>
           <h2 className="mt-7 font-serif text-[clamp(3.8rem,6.4vw,7rem)] font-medium leading-[0.82] tracking-[-0.05em]">
             Mais que pedir <span className="block pl-[0.5em] italic text-amber">uma pizza.</span>
           </h2>

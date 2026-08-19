@@ -1,10 +1,11 @@
 'use client'
 
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useState } from 'react'
 import { Menu, X } from 'lucide-react'
 import { cn } from '@/lib/utils'
 import { Wordmark } from '@/components/wordmark'
 import { useUnitSelector } from '@/components/unit-selector'
+import { Dialog, DialogContent, DialogTitle } from '@/components/ui/dialog'
 
 const NAV = [
   { label: 'Cardápio', href: '#cardapio' },
@@ -18,8 +19,6 @@ export function SiteHeader() {
   const { open } = useUnitSelector()
   const [scrolled, setScrolled] = useState(false)
   const [menuOpen, setMenuOpen] = useState(false)
-  const closeButtonRef = useRef<HTMLButtonElement>(null)
-  const menuTriggerRef = useRef<HTMLButtonElement>(null)
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 40)
@@ -27,22 +26,6 @@ export function SiteHeader() {
     window.addEventListener('scroll', onScroll, { passive: true })
     return () => window.removeEventListener('scroll', onScroll)
   }, [])
-
-  useEffect(() => {
-    if (!menuOpen) return
-    const onKey = (event: KeyboardEvent) => {
-      if (event.key === 'Escape') setMenuOpen(false)
-    }
-    document.addEventListener('keydown', onKey)
-    document.body.style.overflow = menuOpen ? 'hidden' : ''
-    const menuTrigger = menuTriggerRef.current
-    requestAnimationFrame(() => closeButtonRef.current?.focus())
-    return () => {
-      document.removeEventListener('keydown', onKey)
-      document.body.style.overflow = ''
-      menuTrigger?.focus()
-    }
-  }, [menuOpen])
 
   return (
     <header
@@ -66,7 +49,7 @@ export function SiteHeader() {
               className="group relative text-sm font-medium tracking-wide text-cream/90 transition-colors hover:text-cream"
             >
               {item.label}
-              <span className="absolute -bottom-1 left-0 h-px w-0 bg-amber transition-all duration-300 group-hover:w-full" />
+              <span className="absolute -bottom-1 left-0 h-px w-0 bg-amber transition-[width] duration-300 group-hover:w-full" />
             </a>
           ))}
         </nav>
@@ -87,8 +70,7 @@ export function SiteHeader() {
         </div>
 
         <button
-          ref={menuTriggerRef}
-          className="rounded-full p-2 text-cream lg:hidden"
+          className="flex size-11 items-center justify-center text-cream lg:hidden"
           aria-label="Abrir menu"
           aria-expanded={menuOpen}
           onClick={() => setMenuOpen(true)}
@@ -97,13 +79,14 @@ export function SiteHeader() {
         </button>
       </div>
 
-      {menuOpen && (
-        <div className="fixed inset-0 z-50 flex flex-col bg-deep text-cream lg:hidden" role="dialog" aria-modal="true" aria-label="Menu principal">
+      <Dialog open={menuOpen} onOpenChange={setMenuOpen}>
+        {menuOpen && (
+        <DialogContent showCloseButton={false} className="fixed inset-0 top-0 left-0 z-50 flex h-dvh w-full max-w-none translate-x-0 translate-y-0 flex-col gap-0 rounded-none border-0 bg-deep p-0 text-cream ring-0 lg:hidden">
+          <DialogTitle className="sr-only">Menu principal</DialogTitle>
           <div className="flex items-center justify-between px-5 py-4">
             <Wordmark tagline={false} className="text-cream" />
             <button
-              ref={closeButtonRef}
-              className="rounded-full p-2"
+              className="flex size-11 items-center justify-center"
               aria-label="Fechar menu"
               onClick={() => setMenuOpen(false)}
             >
@@ -144,8 +127,9 @@ export function SiteHeader() {
               Pedir agora
             </button>
           </div>
-        </div>
-      )}
+        </DialogContent>
+        )}
+      </Dialog>
     </header>
   )
 }

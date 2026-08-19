@@ -15,37 +15,45 @@ export function Gastronomia() {
               Difícil é parar <span className="italic text-terracota">na primeira.</span>
             </h2>
           </div>
-          <p className="max-w-sm border-l border-primary/20 pl-5 text-base leading-relaxed text-primary/65 lg:col-span-3 lg:col-start-10">
+          <p className="max-w-sm border-l border-primary/20 pl-5 text-base leading-relaxed text-primary/80 lg:col-span-3 lg:col-start-10">
             Forno quente, massa dourada e a mesa no centro de tudo.
           </p>
         </Reveal>
 
-        <div className="mt-16 grid grid-cols-2 gap-3 sm:gap-5 lg:mt-24 lg:grid-cols-12 lg:grid-rows-[10rem_17rem_12rem]">
-          <div className="col-span-2 lg:col-span-7 lg:row-span-2">
-            <figure className="group relative h-full min-h-[28rem] overflow-hidden rounded-t-[5rem] lg:min-h-0">
+        <div className="mt-16 grid grid-cols-2 gap-3 sm:gap-5 lg:mt-24 lg:grid-cols-12">
+          <div className="col-span-2 lg:col-span-8">
+            <figure className="group relative aspect-[4/5] overflow-hidden rounded-tl-[5rem] sm:aspect-[16/11] lg:rounded-tl-[8rem]">
               <Image src="/images/pizza-detalhe.png" alt="Pizza artesanal inteira com tomate, mussarela e manjericão" fill sizes="(max-width: 1024px) 100vw, 58vw" className="object-cover transition-transform duration-[1400ms] group-hover:scale-[1.025]" />
-              <figcaption className="absolute bottom-0 left-0 bg-cream px-5 py-3 text-[0.62rem] font-semibold uppercase tracking-[0.3em] text-primary">01 · Pizza</figcaption>
+              <div className="absolute inset-0 bg-gradient-to-t from-deep/50 via-transparent to-transparent" />
+              <figcaption className="absolute inset-x-0 bottom-0 flex items-end justify-between gap-5 p-5 text-cream sm:p-8">
+                <span className="font-serif text-4xl font-medium italic sm:text-6xl">Pizza artesanal</span>
+                <span className="max-w-[12rem] text-right text-[0.6rem] font-semibold uppercase tracking-[0.25em] text-cream/70">Massa dourada · forno quente</span>
+              </figcaption>
             </figure>
           </div>
 
-          <div className="lg:col-span-4 lg:col-start-9 lg:row-span-2 lg:row-start-1">
-            <figure className="group relative h-full min-h-[22rem] overflow-hidden rounded-t-full lg:min-h-0">
+          <div className="col-span-2 lg:col-span-4">
+            <figure className="group relative aspect-[4/5] overflow-hidden rounded-tr-[5rem] lg:h-full lg:rounded-tr-[8rem]">
               <Image src="/images/cheese-pull.png" alt="Fatia de pizza sendo puxada com queijo derretendo" fill sizes="(max-width: 1024px) 50vw, 33vw" className="object-cover object-center transition-transform duration-[1400ms] group-hover:scale-[1.025]" />
+              <div className="absolute inset-0 bg-gradient-to-t from-deep/70 via-transparent to-transparent" />
+              <figcaption className="absolute bottom-0 left-0 max-w-[14rem] p-6 font-serif text-3xl italic leading-none text-cream sm:text-4xl">O queijo diz tudo.</figcaption>
             </figure>
           </div>
 
-          <Reveal delay={60} className="lg:col-span-4 lg:col-start-2 lg:row-start-3 lg:-mt-8">
-            <figure className="group relative aspect-[5/3] h-full overflow-hidden">
+          <div className="lg:col-span-5 lg:ml-12">
+            <figure className="group relative aspect-square overflow-hidden sm:aspect-[5/3] lg:aspect-[5/4]">
               <Image src="/images/esfiha.png" alt="Esfihas abertas recém-assadas" fill sizes="(max-width: 1024px) 50vw, 30vw" className="object-cover transition-transform duration-[1400ms] group-hover:scale-[1.025]" />
+              <figcaption className="absolute left-0 top-0 bg-cream px-4 py-3 text-[0.6rem] font-bold uppercase tracking-[0.26em] text-primary">Esfihas abertas</figcaption>
             </figure>
-          </Reveal>
+          </div>
 
-          <Reveal delay={140} className="col-span-2 lg:col-span-6 lg:col-start-7 lg:row-start-3 lg:mt-8">
-            <figure className="group relative aspect-[16/7] h-full overflow-hidden rounded-br-[5rem]">
+          <div className="col-span-2 lg:col-span-7 lg:mt-12">
+            <figure className="group relative aspect-[16/9] overflow-hidden rounded-br-[5rem] lg:rounded-br-[8rem]">
               <Image src="/images/mesa-detalhe.png" alt="Mesa cheia com pizza, chope e amigos compartilhando" fill sizes="(max-width: 1024px) 100vw, 48vw" className="object-cover object-center transition-transform duration-[1400ms] group-hover:scale-[1.025]" />
-              <figcaption className="absolute right-0 top-0 bg-amber px-5 py-3 text-[0.62rem] font-bold uppercase tracking-[0.3em] text-deep">02 · Mesa</figcaption>
+              <div className="absolute inset-0 bg-gradient-to-r from-deep/55 via-transparent to-transparent" />
+              <figcaption className="absolute bottom-5 left-5 max-w-[12rem] font-serif text-3xl italic leading-none text-cream sm:bottom-8 sm:left-8 sm:text-4xl">A mesa no centro de tudo.</figcaption>
             </figure>
-          </Reveal>
+          </div>
         </div>
       </div>
     </section>

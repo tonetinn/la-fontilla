@@ -51,17 +51,17 @@ export const ACTION_COPY: Record<
   order: {
     title: 'Onde você quer pedir?',
     subtitle: 'Escolha a cidade para abrir o cardápio correto.',
-    cta: 'Pedir em',
+    cta: 'Abrir cardápio',
   },
   reserve: {
     title: 'Onde será sua mesa?',
     subtitle: 'Escolha a cidade para falar com a unidade correta.',
-    cta: 'Reservar em',
+    cta: 'Reservar mesa',
   },
   maps: {
     title: 'Para qual unidade?',
     subtitle: 'Escolha a cidade para traçar a rota certa.',
-    cta: 'Como chegar —',
+    cta: 'Traçar rota',
   },
 }
 
