@@ -1,4 +1,5 @@
 import Image from 'next/image'
+import { MaskReveal } from '@/components/origin-motion'
 import { Reveal } from '@/components/reveal'
 
 export function Gastronomia() {
@@ -21,18 +22,18 @@ export function Gastronomia() {
         </Reveal>
 
         <div className="mt-16 grid grid-cols-2 gap-3 sm:gap-5 lg:mt-24 lg:grid-cols-12 lg:grid-rows-[10rem_17rem_12rem]">
-          <Reveal className="col-span-2 lg:col-span-7 lg:row-span-2">
+          <MaskReveal direction="left-to-right" className="col-span-2 lg:col-span-7 lg:row-span-2">
             <figure className="group relative h-full min-h-[28rem] overflow-hidden rounded-t-[5rem] lg:min-h-0">
               <Image src="/images/pizza-detalhe.png" alt="Pizza artesanal inteira com tomate, mussarela e manjericão" fill sizes="(max-width: 1024px) 100vw, 58vw" className="object-cover transition-transform duration-[1400ms] group-hover:scale-[1.025]" />
               <figcaption className="absolute bottom-0 left-0 bg-cream px-5 py-3 text-[0.62rem] font-semibold uppercase tracking-[0.3em] text-primary">01 · Pizza</figcaption>
             </figure>
-          </Reveal>
+          </MaskReveal>
 
-          <Reveal delay={100} className="lg:col-span-4 lg:col-start-9 lg:row-span-2 lg:row-start-1">
+          <MaskReveal direction="right-to-left" delay={120} className="lg:col-span-4 lg:col-start-9 lg:row-span-2 lg:row-start-1">
             <figure className="group relative h-full min-h-[22rem] overflow-hidden rounded-t-full lg:min-h-0">
               <Image src="/images/cheese-pull.png" alt="Fatia de pizza sendo puxada com queijo derretendo" fill sizes="(max-width: 1024px) 50vw, 33vw" className="object-cover object-center transition-transform duration-[1400ms] group-hover:scale-[1.025]" />
             </figure>
-          </Reveal>
+          </MaskReveal>
 
           <Reveal delay={60} className="lg:col-span-4 lg:col-start-2 lg:row-start-3 lg:-mt-8">
             <figure className="group relative aspect-[5/3] h-full overflow-hidden">

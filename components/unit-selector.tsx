@@ -11,6 +11,7 @@ import {
 } from 'react'
 import Image from 'next/image'
 import { ArrowRight, Check, MapPin, Navigation, ShoppingBag, UtensilsCrossed, X } from 'lucide-react'
+import { DirectionHoverText } from '@/components/origin-motion'
 import {
   ACTION_COPY,
   actionUrl,
@@ -177,7 +178,7 @@ export function UnitSelectorProvider({ children }: { children: React.ReactNode }
                         <span className="mt-2 flex items-start gap-1.5 text-[0.7rem] leading-relaxed text-primary/55 sm:text-xs"><MapPin className="mt-0.5 size-3 shrink-0" /> {unit.address[0]}</span>
                       </span>
                       <span className="flex items-center justify-between gap-2 text-[0.65rem] font-bold uppercase tracking-[0.12em] text-primary sm:text-xs">
-                        <span className="flex items-center gap-2"><ActionIcon className="size-4 text-terracota" /> {copy.cta}</span>
+                        <span className="flex items-center gap-2"><ActionIcon className="size-4 text-terracota" /> <DirectionHoverText text={copy.cta} accentClassName="text-terracota" /></span>
                         <ArrowRight className="size-4 transition-transform group-hover:translate-x-1" />
                       </span>
                     </span>

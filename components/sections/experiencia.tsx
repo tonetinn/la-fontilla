@@ -22,7 +22,6 @@ export function Experiencia() {
           <Reveal delay={100} className="absolute bottom-0 right-0 h-[46%] w-[48%] overflow-hidden border-[0.7rem] border-primary shadow-2xl sm:border-[1rem]">
             <Image src="/images/ambiente.png" alt="Ambiente cheio da La Fontilla em uma noite movimentada" fill sizes="(max-width: 1024px) 50vw, 28vw" className="object-cover transition-transform duration-[1400ms] hover:scale-[1.025]" />
           </Reveal>
-          <div className="absolute bottom-14 left-5 z-10 flex size-28 items-center justify-center rounded-full bg-amber text-center text-[0.58rem] font-bold uppercase tracking-[0.2em] text-deep sm:size-32">Mesa<br />cheia</div>
         </div>
       </div>
     </section>

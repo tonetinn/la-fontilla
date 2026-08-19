@@ -2,6 +2,7 @@
 
 import Image from 'next/image'
 import { ArrowRight } from 'lucide-react'
+import { MagneticButton } from '@/components/origin-motion'
 import { useUnitSelector } from '@/components/unit-selector'
 
 export function CtaFinal() {
@@ -18,8 +19,8 @@ export function CtaFinal() {
           <h2 className="font-serif text-[clamp(4rem,8.5vw,9rem)] font-medium leading-[0.76] tracking-[-0.055em] lg:col-span-8">Hoje a noite é <span className="block pl-[0.5em] italic text-amber">na La Fontilla.</span></h2>
           <div className="flex flex-col gap-3 lg:col-span-3 lg:col-start-10">
             <p className="mb-2 border-l border-amber pl-4 text-sm leading-relaxed text-cream/70">Escolha a unidade no próximo passo.</p>
-            <button onClick={() => open('order')} className="group flex min-h-16 items-center justify-between rounded-full bg-amber px-7 text-sm font-bold uppercase tracking-[0.14em] text-deep transition-all hover:bg-cream">Pedir agora <ArrowRight className="size-4 transition-transform group-hover:translate-x-1" /></button>
-            <button onClick={() => open('reserve')} className="min-h-16 rounded-full border border-cream/40 px-7 text-sm font-semibold uppercase tracking-[0.12em] transition-all hover:bg-cream hover:text-deep">Reservar mesa</button>
+            <MagneticButton onClick={() => open('order')} contentClassName="justify-between" className="flex min-h-16 rounded-full bg-amber px-7 text-sm font-bold uppercase tracking-[0.14em] text-deep">Pedir agora <ArrowRight className="size-4 transition-transform group-hover:translate-x-1" /></MagneticButton>
+            <MagneticButton onClick={() => open('reserve')} className="min-h-16 rounded-full border border-cream/40 px-7 text-sm font-semibold uppercase tracking-[0.12em] hover:border-cream hover:text-deep">Reservar mesa</MagneticButton>
           </div>
         </div>
       </div>

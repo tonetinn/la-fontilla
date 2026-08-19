@@ -2,6 +2,7 @@
 
 import Image from 'next/image'
 import { ArrowDown, ArrowRight, Star } from 'lucide-react'
+import { MagneticButton, MaskReveal } from '@/components/origin-motion'
 import { useUnitSelector } from '@/components/unit-selector'
 
 export function Hero() {
@@ -21,30 +22,32 @@ export function Hero() {
               </p>
             </div>
 
-            <h1 className="font-serif text-[clamp(4rem,8.6vw,8.7rem)] font-medium leading-[0.76] tracking-[-0.055em] text-balance">
-              A noite
-              <span className="block pl-[0.38em] italic text-cream/92">pede La</span>
-              <span className="block text-amber">Fontilla.</span>
-            </h1>
+            <MaskReveal direction="bottom-to-top" delay={120} duration={1100}>
+              <h1 className="font-serif text-[clamp(4rem,8.6vw,8.7rem)] font-medium leading-[0.76] tracking-[-0.055em] text-balance">
+                A noite
+                <span className="block pl-[0.38em] italic text-cream/92">pede La</span>
+                <span className="block text-amber">Fontilla.</span>
+              </h1>
+            </MaskReveal>
 
             <p className="mt-8 max-w-md border-l border-cream/25 pl-5 text-base leading-relaxed text-cream/72 sm:text-lg">
               Pizza, esfiha, bons momentos e espaço para toda a família.
             </p>
 
             <div className="mt-9 flex flex-col gap-3 sm:flex-row">
-              <button
+              <MagneticButton
                 onClick={() => open('order')}
-                className="group inline-flex min-h-14 items-center justify-center gap-3 rounded-full bg-amber px-8 text-sm font-bold uppercase tracking-[0.14em] text-deep shadow-[0_18px_50px_rgba(0,0,0,0.22)] transition-all duration-300 hover:-translate-y-1 hover:bg-[#d3a74a]"
+                className="inline-flex min-h-14 rounded-full bg-amber px-8 text-sm font-bold uppercase tracking-[0.14em] text-deep shadow-[0_18px_50px_rgba(0,0,0,0.22)] hover:shadow-[0_22px_60px_rgba(0,0,0,0.3)]"
               >
                 Pedir agora
                 <ArrowRight className="size-4 transition-transform group-hover:translate-x-1" />
-              </button>
-              <button
+              </MagneticButton>
+              <MagneticButton
                 onClick={() => open('reserve')}
-                className="min-h-14 rounded-full border border-cream/35 px-8 text-sm font-semibold uppercase tracking-[0.12em] text-cream transition-all duration-300 hover:border-cream hover:bg-cream hover:text-deep"
+                className="min-h-14 rounded-full border border-cream/35 px-8 text-sm font-semibold uppercase tracking-[0.12em] text-cream hover:border-cream hover:text-deep"
               >
                 Reservar uma mesa
-              </button>
+              </MagneticButton>
             </div>
 
             <div className="mt-9 flex flex-wrap items-center gap-x-4 gap-y-3 text-xs uppercase tracking-[0.16em] text-cream/58">
@@ -60,7 +63,7 @@ export function Hero() {
           </div>
         </div>
 
-        <div className="absolute inset-0 lg:relative lg:inset-auto lg:m-5 lg:ml-0 lg:overflow-hidden lg:rounded-[2rem]">
+        <MaskReveal direction="right-to-left" duration={1250} className="absolute inset-0 lg:relative lg:inset-auto lg:m-5 lg:ml-0 lg:overflow-hidden lg:rounded-[2rem]">
           <Image
             src="/images/hero-pizza.png"
             alt="Pizza artesanal da La Fontilla com borda dourada e queijo derretido"
@@ -76,7 +79,7 @@ export function Hero() {
             <p className="font-serif text-2xl italic leading-tight text-cream">A mesa está quase pronta.</p>
             <p className="mt-3 text-[0.62rem] font-semibold uppercase tracking-[0.28em] text-amber">Duas unidades · Paraná</p>
           </div>
-        </div>
+        </MaskReveal>
       </div>
 
       <a
