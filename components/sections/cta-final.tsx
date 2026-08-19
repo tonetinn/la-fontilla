@@ -1,43 +1,26 @@
 'use client'
 
 import Image from 'next/image'
+import { ArrowRight } from 'lucide-react'
 import { useUnitSelector } from '@/components/unit-selector'
 
 export function CtaFinal() {
   const { open } = useUnitSelector()
-
   return (
-    <section className="relative flex min-h-[72svh] items-center justify-center overflow-hidden bg-deep text-cream sm:min-h-[80svh]">
-      <Image
-        src="/images/pizza-served.png"
-        alt="Pizza sendo servida na mesa da La Fontilla"
-        fill
-        sizes="100vw"
-        className="object-cover"
-      />
-      <div className="absolute inset-0 bg-deep/80" />
+    <section className="relative min-h-[88svh] overflow-hidden bg-deep text-cream">
+      <Image src="/images/pizza-served.png" alt="Pizza sendo servida na mesa da La Fontilla" fill sizes="100vw" className="object-cover object-center" />
+      <div className="absolute inset-0 bg-deep/62" />
+      <div className="absolute inset-0 bg-gradient-to-t from-deep via-transparent to-deep/35" />
 
-      <div className="relative z-10 px-5 text-center">
-        <p className="text-xs font-semibold uppercase tracking-[0.35em] text-amber">
-          Jacarezinho <span className="mx-1">•</span> Santo Antônio da Platina
-        </p>
-        <h2 className="mx-auto mt-6 max-w-4xl font-serif text-[clamp(3.25rem,10vw,6.75rem)] font-semibold leading-[0.88] tracking-[-0.035em] text-balance">
-          Hoje a noite é na La Fontilla.
-        </h2>
-
-        <div className="mt-10 flex flex-col items-center justify-center gap-3 sm:flex-row">
-          <button
-            onClick={() => open('order')}
-            className="w-full rounded-full bg-amber px-9 py-4 text-base font-bold tracking-wide text-deep shadow-xl shadow-black/30 transition-transform hover:-translate-y-0.5 sm:w-auto"
-          >
-            Pedir agora
-          </button>
-          <button
-            onClick={() => open('reserve')}
-            className="w-full rounded-full border border-cream/40 px-9 py-4 text-base font-semibold tracking-wide text-cream transition-colors hover:border-cream hover:bg-cream/10 sm:w-auto"
-          >
-            Reservar mesa
-          </button>
+      <div className="relative mx-auto flex min-h-[88svh] max-w-[1480px] flex-col justify-between px-5 py-20 sm:px-8 lg:px-12 lg:py-24">
+        <p className="text-[0.62rem] font-semibold uppercase tracking-[0.38em] text-amber">Jacarezinho · Santo Antônio da Platina</p>
+        <div className="grid items-end gap-10 lg:grid-cols-12">
+          <h2 className="font-serif text-[clamp(4rem,8.5vw,9rem)] font-medium leading-[0.76] tracking-[-0.055em] lg:col-span-8">Hoje a noite é <span className="block pl-[0.5em] italic text-amber">na La Fontilla.</span></h2>
+          <div className="flex flex-col gap-3 lg:col-span-3 lg:col-start-10">
+            <p className="mb-2 border-l border-amber pl-4 text-sm leading-relaxed text-cream/70">Escolha a unidade no próximo passo.</p>
+            <button onClick={() => open('order')} className="group flex min-h-16 items-center justify-between rounded-full bg-amber px-7 text-sm font-bold uppercase tracking-[0.14em] text-deep transition-all hover:bg-cream">Pedir agora <ArrowRight className="size-4 transition-transform group-hover:translate-x-1" /></button>
+            <button onClick={() => open('reserve')} className="min-h-16 rounded-full border border-cream/40 px-7 text-sm font-semibold uppercase tracking-[0.12em] transition-all hover:bg-cream hover:text-deep">Reservar mesa</button>
+          </div>
         </div>
       </div>
     </section>

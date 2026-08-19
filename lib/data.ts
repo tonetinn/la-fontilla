@@ -49,18 +49,18 @@ export const ACTION_COPY: Record<
   { title: string; subtitle: string; cta: string }
 > = {
   order: {
-    title: 'Qual La Fontilla?',
-    subtitle: 'Escolha sua unidade para continuar o pedido.',
+    title: 'Onde você quer pedir?',
+    subtitle: 'Escolha a cidade para abrir o cardápio correto.',
     cta: 'Pedir em',
   },
   reserve: {
-    title: 'Qual La Fontilla?',
-    subtitle: 'Escolha a unidade onde você quer reservar sua mesa.',
+    title: 'Onde será sua mesa?',
+    subtitle: 'Escolha a cidade para falar com a unidade correta.',
     cta: 'Reservar em',
   },
   maps: {
-    title: 'Onde você está?',
-    subtitle: 'Escolha a unidade para traçar a rota.',
+    title: 'Para qual unidade?',
+    subtitle: 'Escolha a cidade para traçar a rota certa.',
     cta: 'Como chegar —',
   },
 }

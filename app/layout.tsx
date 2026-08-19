@@ -32,6 +32,13 @@ export const metadata: Metadata = {
   authors: [{ name: 'La Fontilla' }],
   applicationName: 'La Fontilla',
   category: 'restaurant',
+  icons: {
+    icon: [
+      { url: '/icon-light-32x32.png', media: '(prefers-color-scheme: dark)' },
+      { url: '/icon-dark-32x32.png', media: '(prefers-color-scheme: light)' },
+    ],
+    apple: '/apple-icon.png',
+  },
   openGraph: {
     title: 'La Fontilla | Pizzaria & Esfiharia',
     description:

@@ -2,7 +2,7 @@
 
 import { useState } from 'react'
 import Image from 'next/image'
-import { MapPin, ShoppingBag, UtensilsCrossed } from 'lucide-react'
+import { MapPin, ShoppingBag, Star, UtensilsCrossed } from 'lucide-react'
 import { cn } from '@/lib/utils'
 import { UNIT_LIST, type Unit } from '@/lib/data'
 
@@ -22,11 +22,13 @@ function UnitPanel({
   active,
   dim,
   onHover,
+  index,
 }: {
   unit: Unit
   active: boolean
   dim: boolean
   onHover: (v: boolean) => void
+  index: number
 }) {
   const img = IMAGES[unit.id]
   return (
@@ -34,7 +36,7 @@ function UnitPanel({
       onMouseEnter={() => onHover(true)}
       onMouseLeave={() => onHover(false)}
       className={cn(
-        'group relative min-h-[60svh] flex-1 overflow-hidden transition-[flex-grow] duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] sm:min-h-[65svh] lg:min-h-[78svh]',
+        'group relative min-h-[36rem] flex-1 overflow-hidden transition-[flex-grow] duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] sm:min-h-[42rem] lg:min-h-[78svh]',
         active && 'lg:grow-[1.6]',
         dim && 'lg:grow-[0.7]',
       )}
@@ -49,17 +51,31 @@ function UnitPanel({
           active ? 'scale-105' : 'scale-100',
         )}
       />
-      <div className="absolute inset-0 bg-gradient-to-t from-deep via-deep/55 to-deep/15" />
+      <div className="absolute inset-0 bg-gradient-to-t from-deep via-deep/60 to-deep/10" />
+      <div className="absolute inset-0 bg-primary/10 transition-colors duration-700 group-hover:bg-transparent" />
 
-      <div className="relative z-10 flex h-full flex-col justify-end p-7 text-cream sm:p-10 lg:p-12">
-        <p className="text-xs font-semibold uppercase tracking-[0.3em] text-amber">La Fontilla</p>
-        <h3 className="mt-3 font-serif text-4xl font-semibold leading-none tracking-tight sm:text-5xl lg:text-6xl">
+      <div className="relative z-10 flex h-full flex-col justify-between p-6 text-cream sm:p-10 lg:p-12">
+        <div className="flex items-center justify-between border-t border-cream/30 pt-4 text-[0.6rem] font-bold uppercase tracking-[0.3em] text-cream/70">
+          <span>Unidade 0{index + 1}</span>
+          <span>Paraná</span>
+        </div>
+
+        <div>
+        <p className="text-[0.65rem] font-semibold uppercase tracking-[0.34em] text-amber">La Fontilla</p>
+        <h3 className="mt-3 max-w-[10ch] font-serif text-[clamp(3.2rem,5vw,6rem)] font-medium leading-[0.82] tracking-[-0.045em]">
           {unit.shortName}
         </h3>
         <address className="mt-4 flex items-start gap-2 not-italic text-cream/80">
           <MapPin className="mt-0.5 size-4 shrink-0 text-amber" />
           <span className="text-sm leading-relaxed">{unit.address.join(' · ')}</span>
         </address>
+
+        {unit.id === 'jacarezinho' && (
+          <div className="mt-5 flex flex-wrap gap-2 text-[0.62rem] font-semibold uppercase tracking-[0.14em]">
+            <span className="rounded-full border border-cream/25 bg-deep/30 px-3 py-2">Espaço Kids</span>
+            <span className="flex items-center gap-1.5 rounded-full border border-cream/25 bg-deep/30 px-3 py-2"><Star className="size-3 fill-amber text-amber" /> 4,3 · 78 avaliações</span>
+          </div>
+        )}
 
         <div className="mt-7 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
           <a
@@ -90,6 +106,7 @@ function UnitPanel({
             Como chegar
           </a>
         </div>
+        </div>
       </div>
     </div>
   )
@@ -100,21 +117,25 @@ export function Unidades() {
 
   return (
     <section id="unidades" className="scroll-mt-20 bg-deep text-cream">
-      <div className="mx-auto max-w-7xl px-5 pt-20 lg:px-8 lg:pt-28">
-        <p className="text-xs font-semibold uppercase tracking-[0.4em] text-amber">Unidades</p>
-        <h2 className="display-lg mt-5 max-w-3xl font-serif font-semibold leading-[0.92] tracking-[-0.025em] text-balance">
-          Duas cidades. A mesma La Fontilla.
-        </h2>
+      <div className="mx-auto grid max-w-[1480px] gap-8 px-5 pt-20 sm:px-8 lg:grid-cols-12 lg:items-end lg:px-12 lg:pt-32">
+        <div className="lg:col-span-8">
+          <p className="flex items-center gap-4 text-[0.66rem] font-semibold uppercase tracking-[0.42em] text-amber"><span className="h-px w-12 bg-amber" /> Unidades</p>
+          <h2 className="mt-6 max-w-[11ch] font-serif text-[clamp(3.7rem,7vw,7.6rem)] font-medium leading-[0.82] tracking-[-0.05em] text-balance">
+            Duas cidades. <span className="italic text-amber">A mesma La Fontilla.</span>
+          </h2>
+        </div>
+        <p className="max-w-sm border-l border-cream/20 pl-5 text-base leading-relaxed text-cream/65 lg:col-span-3 lg:col-start-10">Escolha a cidade certa antes de pedir, reservar ou traçar sua rota.</p>
       </div>
 
       <div className="mt-12 flex flex-col lg:mt-16 lg:flex-row">
-        {UNIT_LIST.map((unit) => (
+        {UNIT_LIST.map((unit, index) => (
           <UnitPanel
             key={unit.id}
             unit={unit}
             active={hovered === unit.id}
             dim={hovered !== null && hovered !== unit.id}
             onHover={(v) => setHovered(v ? unit.id : null)}
+            index={index}
           />
         ))}
       </div>

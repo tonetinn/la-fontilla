@@ -5,62 +5,41 @@ import { ArrowRight } from 'lucide-react'
 import { Reveal } from '@/components/reveal'
 import { useUnitSelector } from '@/components/unit-selector'
 
-/*
-  NOTA INTERNA: categorias exibidas de forma indicativa.
-  Confirmar com o cliente as categorias e conteúdos definitivos antes de publicar.
-  Não inventar sabores, preços, ingredientes ou promoções.
-*/
 const CATEGORIES = [
-  { name: 'Pizzas', image: '/images/pizza-detalhe.png', alt: 'Pizza artesanal da La Fontilla', span: 'lg:col-span-7' },
-  { name: 'Esfihas', image: '/images/esfiha.png', alt: 'Esfihas assadas', span: 'lg:col-span-5' },
-  { name: 'Lanches', image: '/images/mesa-detalhe.png', alt: 'Mesa da La Fontilla', span: 'lg:col-span-5' },
-  { name: 'Bebidas', image: '/images/chope.png', alt: 'Chope gelado servido na mesa', span: 'lg:col-span-7' },
+  { name: 'Pizzas', image: '/images/pizza-detalhe.png', alt: 'Pizza artesanal da La Fontilla', className: 'md:col-span-2 md:row-span-2' },
+  { name: 'Esfihas', image: '/images/esfiha.png', alt: 'Esfihas assadas', className: 'md:col-span-1' },
+  { name: 'Lanches', image: '/images/mesa-detalhe.png', alt: 'Mesa da La Fontilla', className: 'md:col-span-1' },
+  { name: 'Bebidas', image: '/images/chope.png', alt: 'Chope gelado servido na mesa', className: 'md:col-span-2' },
 ]
 
 export function Cardapio() {
   const { open } = useUnitSelector()
 
   return (
-    <section id="cardapio" className="scroll-mt-20 bg-background py-20 lg:py-28">
-      <div className="mx-auto max-w-7xl px-5 lg:px-8">
-        <Reveal className="flex flex-col gap-8 lg:flex-row lg:items-end lg:justify-between">
-          <div className="max-w-2xl">
-            <p className="text-xs font-semibold uppercase tracking-[0.4em] text-terracota">Cardápio</p>
-            <h2 className="display-lg mt-5 font-serif font-semibold leading-[0.92] tracking-[-0.025em] text-balance text-primary">
-              O que vai pra mesa hoje?
+    <section id="cardapio" className="scroll-mt-20 overflow-hidden bg-deep py-24 text-cream lg:py-36">
+      <div className="mx-auto max-w-[1480px] px-5 sm:px-8 lg:px-12">
+        <Reveal className="grid gap-8 lg:grid-cols-12 lg:items-end">
+          <div className="lg:col-span-8">
+            <p className="flex items-center gap-4 text-[0.66rem] font-semibold uppercase tracking-[0.42em] text-amber"><span className="h-px w-12 bg-amber" /> Cardápio</p>
+            <h2 className="mt-6 max-w-[9ch] font-serif text-[clamp(3.7rem,7.5vw,7.8rem)] font-medium leading-[0.82] tracking-[-0.05em]">
+              O que vai pra <span className="italic text-amber">mesa hoje?</span>
             </h2>
           </div>
-          <button
-            onClick={() => open('order')}
-            className="group inline-flex shrink-0 items-center gap-2 self-start rounded-full bg-primary px-7 py-4 text-sm font-bold tracking-wide text-primary-foreground transition-transform hover:-translate-y-0.5 lg:self-auto"
-          >
-            Ver cardápio &amp; pedir
-            <ArrowRight className="size-4 transition-transform group-hover:translate-x-1" />
+          <button onClick={() => open('order')} className="group inline-flex min-h-14 items-center justify-center gap-3 self-start rounded-full bg-amber px-8 text-sm font-bold uppercase tracking-[0.12em] text-deep transition-all duration-300 hover:-translate-y-1 hover:bg-cream lg:col-span-3 lg:col-start-10 lg:self-end">
+            Ver cardápio &amp; pedir <ArrowRight className="size-4 transition-transform group-hover:translate-x-1" />
           </button>
         </Reveal>
 
-        <div className="mt-14 grid grid-cols-1 gap-4 sm:grid-cols-2 sm:gap-6 lg:grid-cols-12">
+        <div className="mt-16 grid auto-rows-[15rem] grid-cols-1 gap-3 sm:grid-cols-2 md:grid-cols-4 md:auto-rows-[15rem] lg:mt-20 lg:auto-rows-[18rem]">
           {CATEGORIES.map((cat, i) => (
-            <Reveal key={cat.name} delay={i * 70} className={cat.span}>
-              <button
-                onClick={() => open('order')}
-                className="group relative block aspect-[4/3] w-full overflow-hidden rounded-2xl text-left"
-              >
-                <Image
-                  src={cat.image || '/placeholder.svg'}
-                  alt={cat.alt}
-                  fill
-                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 50vw"
-                  className="object-cover transition-transform duration-[1200ms] ease-out group-hover:scale-[1.04]"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-deep/85 via-deep/10 to-transparent" />
-                <div className="absolute inset-x-0 bottom-0 flex items-center justify-between p-6">
-                  <span className="font-serif text-3xl font-semibold text-cream sm:text-4xl">
-                    {cat.name}
-                  </span>
-                  <span className="flex size-10 items-center justify-center rounded-full border border-cream/40 text-cream transition-colors group-hover:border-amber group-hover:bg-amber group-hover:text-deep">
-                    <ArrowRight className="size-4" />
-                  </span>
+            <Reveal key={cat.name} delay={i * 70} className={cat.className}>
+              <button onClick={() => open('order')} className="group relative block h-full w-full overflow-hidden text-left">
+                <Image src={cat.image} alt={cat.alt} fill sizes="(max-width: 768px) 100vw, 50vw" className="object-cover transition-transform duration-[1400ms] ease-out group-hover:scale-[1.025]" />
+                <div className="absolute inset-0 bg-gradient-to-t from-deep/95 via-deep/15 to-transparent" />
+                <span className="absolute left-5 top-5 text-[0.58rem] font-semibold tracking-[0.25em] text-cream/60">0{i + 1}</span>
+                <div className="absolute inset-x-0 bottom-0 flex items-end justify-between p-6 sm:p-7">
+                  <span className="font-serif text-4xl font-medium italic text-cream sm:text-5xl">{cat.name}</span>
+                  <span className="flex size-11 items-center justify-center rounded-full border border-cream/35 transition-all duration-300 group-hover:border-amber group-hover:bg-amber group-hover:text-deep"><ArrowRight className="size-4" /></span>
                 </div>
               </button>
             </Reveal>
